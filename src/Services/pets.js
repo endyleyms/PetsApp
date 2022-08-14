@@ -1,4 +1,4 @@
-const API_URL = 'https://crudcrud.com/api/17bb6d1425bd4c4d8fb958f907637918/pets';
+const API_URL = process.env.REACT_APP_API_URL;
 
 export const newPet = async (newRegister) => {
     try {

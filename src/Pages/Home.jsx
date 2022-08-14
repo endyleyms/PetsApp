@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import Modal from 'react-modal';
 import { CardPet } from '../Components/CardPet'
-import { listAllPets } from '../Services/pets'
+import { listAllPets, newPet } from '../Services/pets'
 import './Home.css';
 
 export const Home = () => {
@@ -14,21 +14,22 @@ export const Home = () => {
   function closeModal() {
     setIsOpen(false);
   }
+
   const [form, setForm]= useState({
     name: '',
     age:'',
     specie: ''
   })
   const handleInputChange = (event) => {
-    setForm({
-        ...form,
+    setForm((previousForm) => {return {
+        ...previousForm,
         [event.target.name] : event.target.value
-    })
-    console.log (form)
+    }})
   }
   const submit = (event) => {
     event.preventDefault()
     console.log('enviando datos...' + form.name + ' ' + form.age + ' ' + form.specie)
+    newPet(form);
     
 }
 
@@ -45,7 +46,7 @@ export const Home = () => {
     <div>
         <h1 className="title">Welcome to PETSAPP</h1>
         <div>
-         <button onClick={openModal}>+</button>  
+         <button className="buttonfix" onClick={openModal}>+</button>  
          <Modal
          isOpen={modalIsOpen}
          onRequestClose={closeModal}
@@ -54,11 +55,11 @@ export const Home = () => {
             
             <form onSubmit={submit}>
                 <label for="name">Name:</label>
-                <input type="text"  placeholder='Name' onChange={handleInputChange}/>
+                <input type="text"  name="name" placeholder='Name' onChange={handleInputChange}/>
                 <label for="age">Age:</label>
-                <input type="text"  placeholder='Age' onChange={handleInputChange}/>
+                <input type="text"  name="age" placeholder='Age' onChange={handleInputChange}/>
                 <label for="age">Specie:</label>
-                <input type="text"  placeholder='Specie' onChange={handleInputChange}/>
+                <input type="text"  name="specie" placeholder='Specie' onChange={handleInputChange}/>
                 <button type="submit">Submit</button>
             </form>
             <button onClick={closeModal}>close</button>

@@ -11,7 +11,7 @@
     padding-left: 50px;
 
 }
-button{
+.buttonfix{
     border-radius: 50px;
     position: fixed;
     width: 50px;
