@@ -8,7 +8,7 @@ export const CardPet = ({name, age, specie, id}) => {
         <h1>{name}</h1>
         <p>Age: {age} </p>
         <p>Specie: {specie} </p>
-        <Link to={`/ProductDetail/${id}`}>Detail pet</Link>
+        <Link to={`/petdetail/${id}`}>Detail pet</Link>
     </div>
   )
 }

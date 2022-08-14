@@ -1,4 +1,4 @@
-const API_URL = 'https://crudcrud.com/api/86c3bcfc80b54c96a5774020db64aebe/pets';
+const API_URL = 'https://crudcrud.com/api/17bb6d1425bd4c4d8fb958f907637918/pets';
 
 export const newPet = async (newRegister) => {
     try {

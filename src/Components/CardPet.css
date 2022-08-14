@@ -1,6 +1,7 @@
 html {
     height: 100%;
     display: flex;
+    background-color:#D6DBD4;
 }
 body {
     width: 100%;
@@ -11,7 +12,7 @@ body {
 
 .cardPet{
     text-align: center;
-    background:beige;
+    background:#C9D5C9;
     border-radius: 0.5rem;
     box-shadow: var(--box-shadow);
     padding: 2rem;
