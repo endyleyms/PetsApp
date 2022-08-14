@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from "react";
 import { getPet, deletePet, updatePet } from "../Services/pets";
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import sweetalert from 'sweetalert';
 
 export const PetDetail = () => {
+    const navigate = useNavigate();
     const [pet, setPet]= useState ([]);
     const params = useParams();
     const deleteOnePet =()=>{
@@ -20,9 +22,9 @@ export const PetDetail = () => {
     }
 
     const [form, setForm]= useState({
-        name: '',
-        age:'',
-        specie: ''
+        name: pet.name,
+        age: pet.age,
+        specie: pet.specie
       })
       const handleInputChange = (event) => {
         setForm((previousForm) => {return {
@@ -31,10 +33,11 @@ export const PetDetail = () => {
         }})
       }
 
-    const UpadatePet =(event, _id)=>{
+    const UpadatePet =(event,)=>{
         event.preventDefault()
         console.log('enviando datos...' + form.name + ' ' + form.age + ' ' + form.specie)
-        updatePet(_id, form)
+        updatePet(pet._id, form)
+        navigate('/');
 
     }
 
@@ -49,18 +52,16 @@ export const PetDetail = () => {
 
   return (
     <div>
-        <h1>{pet.name}</h1>
-        <p>{pet.age} </p>
-        <p>{pet.specie} </p>
-        <button onClick={deleteOnePet}>Delete</button>
+        <h1>{pet.name} 🐾</h1>
+        <button onClick={deleteOnePet} className="buttonDelete">Delete</button>
         <form onSubmit={UpadatePet}>
             <label for="name">Name:</label>
-            <input type="text"  name="name" placeholder='Name' onChange={handleInputChange}/>
+            <input type="text"  name="name" placeholder={pet.name} onChange={handleInputChange}/>
             <label for="age">Age:</label>
-            <input type="text"  name="age" placeholder='Age' onChange={handleInputChange}/>
+            <input type="text"  name="age" placeholder={pet.age}  onChange={handleInputChange}/>
             <label for="age">Specie:</label>
-            <input type="text"  name="specie" placeholder='Specie' onChange={handleInputChange}/>
-            <button type="submit">Submit</button>
+            <input type="text"  name="specie" placeholder={pet.specie}  onChange={handleInputChange}/>
+            <button type="submit" className="buttonModal">Submit</button>
         </form>
     </div>
 )

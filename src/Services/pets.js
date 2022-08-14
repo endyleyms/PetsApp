@@ -1,4 +1,4 @@
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = 'https://crudcrud.com/api/52a1051252b64a59b47b46f625cd5c1f/pets';
 
 export const newPet = async (newRegister) => {
     try {
@@ -39,7 +39,7 @@ export const newPet = async (newRegister) => {
 
   export const updatePet = async (id, body) => {
     const payload = {
-      method: 'PATCH',
+      method: 'PUT',
       headers: {
         'Content-type': 'application/json',
       },

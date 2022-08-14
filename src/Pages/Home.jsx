@@ -2,9 +2,12 @@ import React, {useState, useEffect} from "react";
 import Modal from 'react-modal';
 import { CardPet } from '../Components/CardPet'
 import { listAllPets, newPet } from '../Services/pets'
+import { useNavigate } from 'react-router-dom';
+import sweetalert from 'sweetalert';
 import './Home.css';
 
 export const Home = () => {
+    const navigate = useNavigate();
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   function openModal() {
@@ -29,7 +32,17 @@ export const Home = () => {
   const submit = (event) => {
     event.preventDefault()
     console.log('enviando datos...' + form.name + ' ' + form.age + ' ' + form.specie)
-    newPet(form);
+    sweetalert({
+        title: 'Create a Pet',
+        icon: 'info',
+        buttons: ['Cancelar', 'Continuar'],
+    }).then ((res)=>{
+        if(res){
+        newPet(form);  
+        setIsOpen(false);
+        }
+    });
+    
     
 }
 
