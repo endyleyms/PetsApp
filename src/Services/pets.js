@@ -1,4 +1,4 @@
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = 'https://crudcrud.com/api/86c3bcfc80b54c96a5774020db64aebe/pets';
 
 export const newPet = async (newRegister) => {
     try {
@@ -9,7 +9,7 @@ export const newPet = async (newRegister) => {
         },
         body: JSON.stringify(newRegister),
       };
-      const response = await fetch(`${API_URL}/pets`, payload);
+      const response = await fetch(`${API_URL}`, payload);
       const data = await response.json();
       return data;
     } catch (error) {
@@ -19,19 +19,19 @@ export const newPet = async (newRegister) => {
 
   export const listAllPets = async () => {
     try {
-      const response = await fetch(`${API_URL}/pets`);
-      const persons = await response.json();
-      return persons;
-    } catch (error) {
-      throw new Error(error);
-    }
+        const response = await fetch(`${API_URL}`);
+        const pets = await response.json();
+        return pets;
+      } catch {
+        throw new Error('Error in fetch products');
+      }
   };
 
   export const getPet = async (id) => {
     try {
-      const response = await fetch(`${API_URL}/pets/${id}`);
-      const people = await response.json();
-      return people;
+      const response = await fetch(`${API_URL}/${id}`);
+      const pet = await response.json();
+      return pet;
     } catch (error) {
       throw new Error(error);
     }
@@ -46,7 +46,7 @@ export const newPet = async (newRegister) => {
       body: JSON.stringify(body),
     };
     try {
-      const response = await fetch(`${API_URL}/pets/${id}`, payload);
+      const response = await fetch(`${API_URL}/${id}`, payload);
       const data = await response.json();
       return data;
     } catch (error) {
@@ -62,7 +62,7 @@ export const newPet = async (newRegister) => {
       },
     };
     try {
-      const response = await fetch(`${API_URL}/pets/${id}`, payload);
+      const response = await fetch(`${API_URL}/${id}`, payload);
       const data = await response.json();
       return data;
     } catch (error) {
