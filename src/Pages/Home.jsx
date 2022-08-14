@@ -44,14 +44,15 @@ export const Home = () => {
     }, []);
   return (
     <div>
-        <h1 className="title">Welcome to PETSAPP</h1>
+        <h1 className="title">Welcome to PET'SAPP 🐾</h1>
         <div>
          <button className="buttonfix" onClick={openModal}>+</button>  
          <Modal
          isOpen={modalIsOpen}
          onRequestClose={closeModal}
+         className="modalPet"
          >
-            <h2>Hello</h2>
+            <h2 className="title">CREATE A NEW PET 🐾</h2>
             
             <form onSubmit={submit}>
                 <label for="name">Name:</label>
@@ -60,9 +61,9 @@ export const Home = () => {
                 <input type="text"  name="age" placeholder='Age' onChange={handleInputChange}/>
                 <label for="age">Specie:</label>
                 <input type="text"  name="specie" placeholder='Specie' onChange={handleInputChange}/>
-                <button type="submit">Submit</button>
+                <button type="submit"  className="buttonModal">Submit</button>
             </form>
-            <button onClick={closeModal}>close</button>
+            
             </Modal> 
         </div>
         <div className="cards">
