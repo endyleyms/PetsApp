@@ -30,8 +30,8 @@ export const newPet = async (newRegister) => {
   export const getPet = async (id) => {
     try {
       const response = await fetch(`${API_URL}/${id}`);
-      const people = await response.json();
-      return people;
+      const pet = await response.json();
+      return pet;
     } catch (error) {
       throw new Error(error);
     }

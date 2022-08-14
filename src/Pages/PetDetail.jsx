@@ -7,6 +7,7 @@ export const PetDetail = () => {
     const params = useParams();
     const fetchPet = async () => {
         const data= await getPet (params.id);
+        console.log(params.id)
         setPet(data);
     }
     useEffect(()=>{
@@ -18,6 +19,8 @@ export const PetDetail = () => {
         <h1>{pet.name}</h1>
         <p>{pet.age} </p>
         <p>{pet.specie} </p>
+        <button>Update</button>
+        <button>Delete</button>
     </div>
   )
 }
