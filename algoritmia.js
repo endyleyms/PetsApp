@@ -1,17 +1,27 @@
 //Desarrolla un script que encuentre las cadenas de texto que sean palíndromos con más de 3 letras en el siguiente bloque de texto:
 const s = "anulalalunapaisajemontanaguaamoraromacomidaluzazulsillagatobotellacamarayosoypalindromocasaverdebanderaventanacangrejolarutanosaportootropasonaturaliniciaracaestoseralodoodolaresdonasbarcosmarcieloaviontierrapaisbicicletaestonoespalindromojugarseverlasalrevesusandounradarenelojorejero";
 
-function palindrome (s){
-    for(let i= 0; i<=s.length; i++){
-        const slice =s.slice(i, i+11)
-        console.log('slice 10', slice)
-        let count = 0
-        for (let k=0, j=slice.length-1; k<=j; k++, j--){
-            if (s[k] !== s[j]){
-                return false
+function isPalindrome (s){
+    for (let i=0, j=s.length-1; i<=j; i++, j--){
+        if (s[i] !== s[j]){
+            return false
+        }        
+    }
+    return true
+}   
+
+
+function countPalindromes(text){
+    let count = 0
+    for(let i= 0; i<text.length - 3 ; i++){
+        for(let j= i+3; j<=text.length; j++){
+            const temp= text.substring(i, j);
+            if (isPalindrome(temp)){
+                count ++
             }
-        return count = count +1
         }
-    }   
-    
-}console.log (palindrome (s));
+    }
+    return count
+}
+
+countPalindromes(s)
