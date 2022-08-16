@@ -12,12 +12,12 @@ function isPalindrome (s){
 
 
 function countPalindromes(text){
-    let count = 0
+    let count = []
     for(let i= 0; i<text.length - 3 ; i++){
         for(let j= i+3; j<=text.length; j++){
             const temp= text.substring(i, j);
             if (isPalindrome(temp)){
-                count ++
+                count.push(temp)
             }
         }
     }
